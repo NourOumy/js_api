@@ -1,21 +1,48 @@
-// intégrer des plugin
+// variables
 
-function myFetch (){
+let amount = document.querySelector('.amount')
+let from = document.querySelector('.from')
+let to = document.querySelector('.to')
+let resultat = document.querySelector('.resultat')
+let convert = document.querySelector('button')
 
-fetch(`https://api.example.com/data`) 
-// (ligne qui pointe vers le service externe à qui on veut s’adresser)
+// functions
+function myfetchConvert (){
 
-// (méthode then ^pour gérer la réponse reçue en retour)
+fetch (`https://api.apilayer.com/fixer/convert?apikey=FKJDXG4Xc4azEOTWCwOdK46vmNH0HU5B&&to=${to.value}&from=${from.value}&amount=${amount.value}`) 
+
   .then(response => response.json()) 
-//   ( 1) convertir en json : tableaux objets et clés et envoyer les données au .then suivant)
+
   .then(data => { 
-    // (2) à partir des datas qu’on a converti, faire un console log poour voir ce qu’on a) récup
-    console.log(data); 
-    // (3) toutes la programmations se fait ici, qu’est ce que je vais en faire)
+    resultat.innerHTML = data.result.toFixed(2)
+    // console.log(data);
+
+
   })
   .catch(error => {console.log("Erreur lors de la récup des données :", error); 
-//   (4) si on a pas les droits ou on a fait une erreur, ça les retourne ici)
+})
+}
+function myfetchSymboles (){
+
+fetch (`https://api.apilayer.com/fixer/symbols?apikey=FKJDXG4Xc4azEOTWCwOdK46vmNH0HU5B`) 
+
+  .then(response => response.json()) 
+
+  .then(data => { 
+    
+    console.log(data);
+
+
+  })
+  .catch(error => {console.log("Erreur lors de la récup des données :", error); 
+})
+}
+
+
+// events 
+
+convert.addEventListener("click", function () {
+  myfetchConvert()
 })
 
-}
 
