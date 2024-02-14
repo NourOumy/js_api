@@ -1,21 +1,34 @@
 // intégrer des plugin
+let wrapper = document.querySelector('.wrapper')
+let femalebtn = document.querySelector('.frobots')
+let malebtn = document.querySelector('.hrobots')
+let everybtn = document.querySelector('.everyrobots')
 
-function myFetch (){
 
-fetch(`https://api.example.com/data`) 
-// (ligne qui pointe vers le service externe à qui on veut s’adresser)
+function myFetch (gender){
 
-// (méthode then ^pour gérer la réponse reçue en retour)
+fetch("scripts/robots.json") 
+
   .then(response => response.json()) 
-//   ( 1) convertir en json : tableaux objets et clés et envoyer les données au .then suivant)
   .then(data => { 
-    // (2) à partir des datas qu’on a converti, faire un console log poour voir ce qu’on a) récup
-    console.log(data); 
-    // (3) toutes la programmations se fait ici, qu’est ce que je vais en faire)
+    data.robots.forEach(function(robot){
+      wrapper.innerHTML += `
+      <div class="single-robot ${robot.gender}" data-gender="${robot.gender}">
+      <h2>${robot.first_name} ${robot.last_name}</h2>
+      <img src="${robot.portrait}" alt="robot">
+      <p class ="description">${robot.description}</p>
+        </div>
+      ` 
+      wrapper.
+
+      if()
+
+    })
+    
   })
   .catch(error => {console.log("Erreur lors de la récup des données :", error); 
-//   (4) si on a pas les droits ou on a fait une erreur, ça les retourne ici)
-})
+  })
 
 }
 
+myFetch()
