@@ -1,20 +1,30 @@
-//• & = prent le meme 'nom' que le parent. ici & = a
+body{
+    background-color: aliceblue;
+    text-align: center;
+}
 
-// a{
-//   &:hover{    
-//   }
-// }
-
-//• lighten et darken + amount of it to change
-
-// body{
-//   background: lighten($color: $main-color, $amount: 10%);
-//   background: lighten($main-color, 10%);
-// }
-
-
-
-
+.wrapper{
+    width: 700px;
+    margin: 100px auto;
+    background-color: burlywood;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    .result{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    div{
+        padding: 10px;
+        text-align: left;
+        font-weight: bold;
+        font-style: italic;
+    }
+    }
+}
 
 
 
